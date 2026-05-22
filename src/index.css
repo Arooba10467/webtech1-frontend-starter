@@ -1,0 +1,217 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  background: pink;
+  color: rgb(57, 3, 57);
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: peachpuff;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: plum;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+
+.subtext {
+  font-size: 14px;
+  color: rgb(136, 31, 80);
+  margin-top: 4px;
+}
+
+/* NAVBAR */
+
+.nav {
+  display: flex;
+  gap: 20px;
+  padding: 12px 20px;
+  background: rgb(241, 192, 215);
+  border-bottom: 1px solid #ddd;
+}
+
+.nav a {
+  text-decoration: none;
+  color: rgb(57, 3, 57);
+  font-weight: 500;
+}
+
+.nav a.active {
+  border-bottom: 2px solid purple;
+  font-weight: bold;
+}
+
+/* MAIN */
+
+.main {
+  padding: 20px;
+}
+
+/* CARD */
+
+.card {
+  background: peachpuff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+.card-sub {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  color: rgb(136, 31, 80);
+}
+
+/* TICKET */
+
+.ticket {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: papayawhip;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ticket p {
+  margin-top: 5px;
+  color: #555;
+}
+
+.ticket button {
+  margin-top: 10px;
+}
+
+/* BUTTONS */
+
+.btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: rgb(244, 133, 170);
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 500;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.secondary {
+  background: whitesmoke;
+  color: black;
+}
+
+.delete-btn {
+  background: plum;
+  color: white;
+}
+
+/* INPUTS */
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* PRIORITY */
+
+.priority {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.high {
+  background: purple;
+  color: white;
+}
+
+.medium {
+  background: rgb(255, 0, 208);
+  color: white;
+}
+
+.low {
+  background: pink;
+  color: black;
+}
+
+/* FORM */
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.error {
+  color: darkred;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .header {
+    gap: 15px;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ticket {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+}
+
+.ticket-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}

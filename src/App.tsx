@@ -5,21 +5,32 @@ import {
 } 
 from "react-router-dom";
 import { useState } from "react";
+import { useEffect } from "react";
 
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 
 import TicketListPage from "./pages/TicketListPage";
 import CreateTicketPage from "./pages/CreateTicketPage";
-
-import { initialTickets } from "./data/mockTicket";
+import { getTickets, deleteTicket } from "./services/api";
+// import { initialTickets } from "./data/mockTicket";
 
 import type { Ticket } from "./types/ticket";
 
 function App() {
   const navigate = useNavigate();
-  const [tickets, setTickets] =
-    useState<Ticket[]>(initialTickets);
+  const [tickets, setTickets] = useState<Ticket[]>([]);
+
+ // const [tickets, setTickets] =
+//    useState<Ticket[]>(initialTickets);
+  const loadTickets = async () => {
+  const data = await getTickets();
+  setTickets(data);
+};
+
+useEffect(() => {
+  loadTickets();
+}, []);
 
   const [editingTicket, setEditingTicket] =
     useState<Ticket | null>(null);

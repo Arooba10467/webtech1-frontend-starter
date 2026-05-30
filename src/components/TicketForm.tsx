@@ -63,21 +63,11 @@ function TicketForm({
     setError("");
 
     const ticketData: Ticket = {
-      id: editingTicket
-        ? editingTicket.id
-        : Date.now(),
-
-      subject,
-      description,
-      priority,
-      status,
-
-      createdAt: editingTicket
-        ? editingTicket.createdAt
-        : new Date()
-            .toISOString()
-            .split("T")[0],
-    };
+  subject,
+  description,
+  priority,
+  status,
+};
 
     onAddTicket(ticketData);
 

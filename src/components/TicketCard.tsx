@@ -2,7 +2,7 @@ import type { Ticket } from "../types/ticket";
 
 type TicketCardProps = {
   ticket: Ticket;
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
   onEdit: (ticket: Ticket) => void;
 };
 
@@ -11,6 +11,7 @@ function TicketCard({
   onDelete,
   onEdit,
 }: TicketCardProps) {
+  console.log("TICKET:", ticket);
   return (
     <div className="ticket">
       <div>
@@ -40,7 +41,10 @@ function TicketCard({
 
           <button
             className="btn delete-btn"
-            onClick={() => onDelete(ticket.id)}
+            onClick={() =>
+              ticket._id &&
+              onDelete(ticket._id)
+            }
           >
             Delete
           </button>

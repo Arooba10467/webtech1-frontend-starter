@@ -1,84 +1,71 @@
-import {
-  Routes,
-  Route,
-  useNavigate,
-} 
-from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 
 import TicketListPage from "./pages/TicketListPage";
 import CreateTicketPage from "./pages/CreateTicketPage";
-import { getTickets, deleteTicket } from "./services/api";
-// import { initialTickets } from "./data/mockTicket";
+
+import {
+  getTickets,
+  deleteTicket,
+  createTicket,
+} from "./services/api";
 
 import type { Ticket } from "./types/ticket";
 
 function App() {
   const navigate = useNavigate();
+
   const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [editingTicket, setEditingTicket] = useState<Ticket | null>(null);
 
- // const [tickets, setTickets] =
-//    useState<Ticket[]>(initialTickets);
+  // GET ALL TICKETS (READ)
   const loadTickets = async () => {
-  const data = await getTickets();
-  setTickets(data);
-};
-
-useEffect(() => {
-  loadTickets();
-}, []);
-
-  const [editingTicket, setEditingTicket] =
-    useState<Ticket | null>(null);
-
-  const handleDelete = (id: number) => {
-    setTickets(
-      tickets.filter(
-        (ticket) => ticket.id !== id
-      )
-    );
+    try {
+      const data = await getTickets();
+      setTickets(data);
+    } catch (error) {
+      console.error("Failed to load tickets:", error);
+    }
   };
 
+  useEffect(() => {
+    loadTickets();
+  }, []);
+
+  // DELETE TICKET
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteTicket(id);
+      loadTickets();
+    } catch (error) {
+      console.error("Delete failed:", error);
+    }
+  };
+
+  // EDIT (just opens form with data)
   const handleEdit = (ticket: Ticket) => {
-  setEditingTicket(ticket);
-
-  navigate("/create");
+    setEditingTicket(ticket);
+    navigate("/create");
   };
 
-  const handleAddOrUpdateTicket = (
-    ticketData: Ticket
-  ) => {
-    const existingTicket = tickets.find(
-      (ticket) =>
-        ticket.id === ticketData.id
-    );
-
-    if (existingTicket) {
-      setTickets(
-        tickets.map((ticket) =>
-          ticket.id === ticketData.id
-            ? ticketData
-            : ticket
-        )
-      );
-
+  // CREATE / UPDATE TICKET
+  const handleAddOrUpdateTicket = async (ticketData: Ticket) => {
+    try {
+      await createTicket(ticketData);
       setEditingTicket(null);
-    } else {
-      setTickets([
-        ...tickets,
-        ticketData,
-      ]);
+      navigate("/");
+      loadTickets();
+    } catch (error) {
+      console.error("Save failed:", error);
     }
   };
 
   return (
     <>
       <Header />
-
       <Navbar />
 
       <main className="main">
@@ -98,12 +85,8 @@ useEffect(() => {
             path="/create"
             element={
               <CreateTicketPage
-                onAddTicket={
-                  handleAddOrUpdateTicket
-                }
-                editingTicket={
-                  editingTicket
-                }
+                onAddTicket={handleAddOrUpdateTicket}
+                editingTicket={editingTicket}
               />
             }
           />

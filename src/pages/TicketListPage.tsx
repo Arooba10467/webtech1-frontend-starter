@@ -4,7 +4,7 @@ import type { Ticket } from "../types/ticket";
 
 type Props = {
   tickets: Ticket[];
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
   onEdit: (ticket: Ticket) => void;
 };
 
@@ -23,7 +23,7 @@ function TicketListPage({
 
       {tickets.map((ticket) => (
         <TicketCard
-          key={ticket.id}
+          key={ticket._id}
           ticket={ticket}
           onDelete={onDelete}
           onEdit={onEdit}

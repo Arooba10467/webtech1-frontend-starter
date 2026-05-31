@@ -39,15 +39,15 @@ function TicketCard({
             Edit
           </button>
 
-          <button
-            className="btn delete-btn"
-            onClick={() =>
-              ticket._id &&
-              onDelete(ticket._id)
-            }
-          >
-            Delete
-          </button>
+         <button
+           className="btn delete-btn"
+           onClick={() => {
+          console.log("Delete clicked:", ticket._id);
+           onDelete(ticket._id as string);
+        }}
+        >
+        Delete
+        </button>
         </div>
       </div>
     </div>

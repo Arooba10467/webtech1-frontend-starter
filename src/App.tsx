@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 
 import TicketListPage from "./pages/TicketListPage";
 import CreateTicketPage from "./pages/CreateTicketPage";
+import { updateTicket } from "./services/api";
 
 import {
   getTickets,
@@ -37,13 +38,15 @@ function App() {
 
   // DELETE TICKET
   const handleDelete = async (id: string) => {
-    try {
-      await deleteTicket(id);
-      loadTickets();
-    } catch (error) {
-      console.error("Delete failed:", error);
-    }
-  };
+  console.log("Deleting ID:", id);
+
+  try {
+    await deleteTicket(id);
+    loadTickets();
+  } catch (error) {
+    console.error("Delete failed:", error);
+  }
+};
 
   // EDIT (just opens form with data)
   const handleEdit = (ticket: Ticket) => {
@@ -52,16 +55,20 @@ function App() {
   };
 
   // CREATE / UPDATE TICKET
-  const handleAddOrUpdateTicket = async (ticketData: Ticket) => {
-    try {
+const handleAddOrUpdateTicket = async (ticketData: any) => {
+  try {
+    if (editingTicket) {
+      await updateTicket(editingTicket._id as string, ticketData);} else {
       await createTicket(ticketData);
-      setEditingTicket(null);
-      navigate("/");
-      loadTickets();
-    } catch (error) {
-      console.error("Save failed:", error);
     }
-  };
+
+    setEditingTicket(null);
+    await loadTickets();
+    navigate("/");
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <>

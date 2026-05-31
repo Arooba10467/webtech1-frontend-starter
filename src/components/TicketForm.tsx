@@ -62,13 +62,13 @@ function TicketForm({
 
     setError("");
 
-    const ticketData: Ticket = {
-  subject,
+    const ticketData = {
+      subject,
   description,
   priority,
   status,
+  createdAt: new Date().toISOString(),
 };
-
     onAddTicket(ticketData);
 
     setSubject("");

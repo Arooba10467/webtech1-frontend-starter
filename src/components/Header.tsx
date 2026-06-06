@@ -8,7 +8,7 @@ function Header() {
           <h1>MiniHelpDesk</h1>
 
           <p className="subtext">
-            Demo Project by Arooba Afghan(2312145) | CS4717
+            Demo Project by Arooba Afghan(2312145) and Kashish Batool (2312152) | CS4717
           </p>
         </div>
       </div>

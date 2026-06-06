@@ -1,116 +1,301 @@
-# CSC 4717 — Web Technologies-I (Frontend Starter)
-
-This repository is the **official frontend starter template** for **CSC 4717 Web Technologies-I**.
-
-You will use this starter to:
-
-- set up your development environment (Week 1),
-- complete weekly milestone assignments,
-- and continuously build your project into a **final polished version** for presentation.
 
 ---
 
-## What’s inside (Frontend Tech Stack)
+# MiniHelpDesk – Full Stack Ticket Management System
 
-- **Vite** — fast development server + build tool  
-  https://vitejs.dev/
-- **React** — UI library  
-  https://react.dev/
-- **TypeScript** — type-safe JavaScript  
-  https://www.typescriptlang.org/
-- **CSS Modules** — scoped component styling (`*.module.css`)  
-  https://github.com/css-modules/css-modules
-- **pnpm** — package manager  
-  https://pnpm.io/
-- **ESLint** — code quality and best practices  
-  https://eslint.org/
-- **Prettier** — code formatter (consistent style)  
-  https://prettier.io/
+**Course:** CSC 4717 – Web Technologies-I
+**Student:** Arooba Afghan (2312145)
+
+## Project Overview
+
+MiniHelpDesk is a full-stack ticket management application developed as part of the CSC 4717 Web Technologies-I course project.
+
+The application allows users to create, view, search, update, and delete support tickets through a React-based frontend while storing data persistently in MongoDB Atlas through an Express.js backend API.
 
 ---
 
-## Before you start (Windows)
+## Features
 
-### Required installs
+### Core Features
 
-1. **Node.js (LTS)**
+* Create support tickets
+* View all tickets
+* Edit existing tickets
+* Delete tickets
+* Store tickets in MongoDB Atlas
+* REST API integration
 
-- Download and install the LTS version from:
-  https://nodejs.org/
+### Additional Features
 
-2. **pnpm** (install after Node.js)
-   Open **PowerShell** and run:
+#### Product Feature: Search Tickets
 
-```bash
-npm i -g pnpm
+Users can search tickets by subject or description.
+
+#### Engineering Quality Feature: Empty State Design
+
+When no tickets exist, the application displays a helpful message instead of showing a blank page.
+
+---
+
+## Technology Stack
+
+### Frontend
+
+* React
+* TypeScript
+* React Router
+* Vite
+* CSS
+
+### Backend
+
+* Node.js
+* Express.js
+* TypeScript
+
+### Database
+
+* MongoDB Atlas
+* Mongoose
+
+### Development Tools
+
+* Git & GitHub
+* ESLint
+* Prettier
+
+---
+
+## Project Structure
+
+```text
+webtech1-frontend-starter
+│
+├── backend
+│   ├── src
+│   │   ├── config
+│   │   ├── controllers
+│   │   ├── models
+│   │   ├── routes
+│   │   ├── app.ts
+│   │   └── server.ts
+│   │
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── .env
+│
+├── src
+│   ├── components
+│   ├── pages
+│   ├── services
+│   ├── types
+│   └── App.tsx
+│
+├── public
+├── package.json
+└── README.md
 ```
 
-3. **Git**
+---
 
-- Download and install from:
-  https://git-scm.com/downloads
+## Prerequisites
 
-4. **VS Code**
+Install the following software before running the project:
 
-- Download and install from:
-  https://code.visualstudio.com/
+### Required Software
 
-### Required account
+* Node.js (LTS)
 
-- GitHub account (for submitting assignments)
-  https://github.com/
+  * [https://nodejs.org](https://nodejs.org)
 
-## Check your installation (PowerShell)
+* Git
+
+  * [https://git-scm.com](https://git-scm.com)
+
+* VS Code
+
+  * [https://code.visualstudio.com](https://code.visualstudio.com)
+
+* MongoDB Atlas Account
+
+  * [https://www.mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
+
+---
+
+## Verify Installation
+
+Open PowerShell and run:
 
 ```bash
 node -v
-pnpm -v
+npm -v
 git --version
 ```
 
-## Getting started
+---
 
-1. **Create your own repo from the course template**
+## Installation
 
-- Open the course starter repository on GitHub.
-
-- Click Use this template.
-
-- Name your repository according to your project (example: my-project-frontend).
-
-- Create the repository under your GitHub account.
-
-2. **Clone your repository**
+### Clone Repository
 
 ```bash
-git clone https://github.com/<your-username>/<your-repo-name>.git
-cd <your-repo-name>
+git clone <repository-url>
+cd webtech1-frontend-starter
 ```
 
-3. **Install dependencies**
+---
+
+# Backend Setup
+
+Navigate to backend folder:
 
 ```bash
-pnpm install
+cd backend
 ```
 
-4. **Run the project**
+Install dependencies:
 
 ```bash
-pnpm dev
+npm install
 ```
 
-Vite will print a local URL (usually):
-- http://localhost:5173
+Create a `.env` file:
 
-Open it in your browser.
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+```
 
-## Useful commands
+Start backend server:
 
 ```bash
-pnpm dev          # start development server
-pnpm build        # build for production
-pnpm preview      # preview production build locally
-pnpm lint         # run ESLint checks
-pnpm format       # format code using Prettier
-pnpm format:check # check formatting (no changes)
+npm run dev
 ```
+
+Expected output:
+
+```text
+Server running on port 5000
+MongoDB Connected
+```
+
+---
+
+# Frontend Setup
+
+Open a second terminal:
+
+```bash
+cd webtech1-frontend-starter
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run frontend:
+
+```bash
+npm run dev
+```
+
+Expected output:
+
+```text
+Local: http://localhost:5173
+```
+
+Open the URL in your browser.
+
+---
+
+## API Endpoints
+
+### Get All Tickets
+
+```http
+GET /tickets
+```
+
+### Create Ticket
+
+```http
+POST /tickets
+```
+
+### Update Ticket
+
+```http
+PUT /tickets/:id
+```
+
+### Delete Ticket
+
+```http
+DELETE /tickets/:id
+```
+
+---
+
+## Available Commands
+
+### Frontend
+
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run lint
+```
+
+### Backend
+
+```bash
+npm run dev
+```
+
+---
+
+## Testing
+
+The application was tested using:
+
+* Browser testing
+* MongoDB Atlas
+* Postman
+* React Developer Tools
+
+---
+
+## Learning Outcomes
+
+This project demonstrates:
+
+* React component development
+* State management using React Hooks
+* React Router navigation
+* REST API development with Express.js
+* MongoDB database integration
+* CRUD operations
+* TypeScript usage in frontend and backend
+* Full-stack application development
+* Git and GitHub workflow
+
+---
+
+## Author
+
+**Arooba Afghan** and **Kashish Batool**
+Student ID: **2312145** and **2312152**
+CSC 4717 – Web Technologies-I
+
+---
+
+## Acknowledgement
+
+This project was developed using the official CSC 4717 Web Technologies-I frontend starter template and extended into a full-stack application using React, Express.js, MongoDB Atlas, and TypeScript.
+
+---
+

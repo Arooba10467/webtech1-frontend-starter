@@ -12,6 +12,9 @@ MiniHelpDesk is a full-stack ticket management application developed as part of 
 
 The application allows users to create, view, search, update, and delete support tickets through a React-based frontend while storing data persistently in MongoDB Atlas through an Express.js backend API.
 
+## Demo Video
+
+[Click here to watch the demo](video.mp4)
 ---
 
 ## Features

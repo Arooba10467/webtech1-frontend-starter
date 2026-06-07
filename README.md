@@ -15,7 +15,13 @@ The application allows users to create, view, search, update, and delete support
 ## Demo Video
 https://drive.google.com/file/d/1wI-gjx9H6XD2LtaJJbrmX7wIu6_IPm7Y/view?usp=sharing
 ---
+# Screenshots
 
+## Image 1
+![Image 1](image1.png)
+
+## Image 2
+![Image 2](image2.png)
 ## Features
 
 ### Core Features
